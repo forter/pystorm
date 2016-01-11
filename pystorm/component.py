@@ -40,7 +40,7 @@ _PYTHON_LOG_LEVELS = {'critical': logging.CRITICAL,
                       'trace': logging.DEBUG}
 _SERIALIZERS = {"json": JSONSerializer, "msgpack": MsgpackSerializer}
 
-if not platform.system() == "Windows":
+if platform.system() == "Windows":
     DEFAULT_SIGNAL = None
 else:
     DEFAULT_SIGNAL = signal.SIGUSR1
