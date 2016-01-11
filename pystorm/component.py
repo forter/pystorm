@@ -10,6 +10,7 @@ from logging.handlers import RotatingFileHandler
 from os.path import join
 from threading import RLock
 from traceback import format_exc
+import platform
 
 from six import iteritems
 
@@ -39,6 +40,10 @@ _PYTHON_LOG_LEVELS = {'critical': logging.CRITICAL,
                       'trace': logging.DEBUG}
 _SERIALIZERS = {"json": JSONSerializer, "msgpack": MsgpackSerializer}
 
+if not platform.system() == "Windows":
+    DEFAULT_SIGNAL = None
+else:
+    DEFAULT_SIGNAL = signal.SIGUSR1
 
 log = logging.getLogger(__name__)
 
@@ -170,7 +175,7 @@ class Component(object):
 
 
     def __init__(self, input_stream=sys.stdin, output_stream=sys.stdout,
-                 rdb_signal=signal.SIGUSR1, serializer="json"):
+                 rdb_signal=DEFAULT_SIGNAL, serializer="json"):
         # Ensure we don't fall back on the platform-dependent encoding and
         # always use UTF-8
         self.topology_name = None
