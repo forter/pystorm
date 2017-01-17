@@ -2,6 +2,3 @@ six>=1.5
 setuptools
 simplejson
 msgpack-python
-mock
-pytest
-unittest2
