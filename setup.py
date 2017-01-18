@@ -55,7 +55,7 @@ setup_requires = []
 
 setup(
     name='pystorm',
-    version=get_version(),
+    version=open('VERSION').read().strip(),
     author='Parsely, Inc.',
     author_email='hello@parsely.com',
     url='https://github.com/pystorm/pystorm',
