@@ -5,6 +5,7 @@ each serializer a Java counterpart needs to exist.
 from __future__ import absolute_import, print_function, unicode_literals
 
 
+from builtins import object
 class Serializer(object):
 
     def __init__(self, input_stream, output_stream, reader_lock, writer_lock):
